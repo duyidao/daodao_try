@@ -18,7 +18,7 @@ function childUnMount() {
 <template>
   <div>
     <span class="mr-20">I'm father</span>
-    <el-button @click.stop="flag = !flag">{{ flag ? '挂载子组件' : '卸载子组件' }}</el-button>
+    <el-button @click.stop="flag = !flag">{{ !flag ? '挂载子组件' : '卸载子组件' }}</el-button>
     <Son
       v-if="flag"
       @vue:mounted="childMounted"

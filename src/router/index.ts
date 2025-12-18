@@ -10,12 +10,33 @@ const router = createRouter({
       children: [
         {
           path: 'js',
-          redirect: '/js/objectLoop',
+          redirect: '/js/createCancelTask',
           children: [
             {
-              path: '/js/objectLoop',
+              path: 'createCancelTask',
+              name: 'createCancelTask',
+              component: () => import('@/views/js/createCancelTask/index.vue')
+            },
+            {
+              path: 'objectLoop',
               name: 'objectLoop',
               component: () => import('@/views/js/objectLoop/index.vue')
+            },
+          ]
+        },
+        {
+          path: 'package',
+          redirect: '/package/elDialog',
+          children: [
+            {
+              path: 'elDialog',
+              name: 'myElDialog',
+              component: () => import('@/views/package/el-dialog/index.vue')
+            },
+            {
+              path: 'elButton',
+              name: 'myElButton',
+              component: () => import('@/views/package/el-button/index.vue')
             },
           ]
         },
@@ -24,27 +45,27 @@ const router = createRouter({
           redirect: '/vue/provideInject',
           children: [
             {
-              path: '/vue/provideInject',
+              path: 'provideInject',
               name: 'provideInject',
               component: () => import('@/views/vue/provideInject/index.vue')
             },
             {
-              path: '/vue/listenerSon',
+              path: 'listenerSon',
               name: 'listenerSon',
               component: () => import('@/views/vue/listenerSon/index.vue')
             },
             {
-              path: '/vue/customRefLoading',
+              path: 'customRefLoading',
               name: 'customRefLoading',
               component: () => import('@/views/vue/customRefLoading/index.vue')
             },
             {
-              path: '/vue/stateReset',
+              path: 'stateReset',
               name: 'stateReset',
               component: () => import('@/views/vue/stateReset/index.vue')
             },
             {
-              path: '/vue/defineComponent',
+              path: 'defineComponent',
               name: 'defineComponent',
               component: () => import('@/views/vue/defineComponent/index.vue')
             }

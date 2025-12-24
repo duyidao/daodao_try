@@ -39,6 +39,9 @@ const vueComponent = {
   "/vue/useTemplateRef": {
     name: "useTemplateRef实现原理",
   },
+  "/vue/useEventListener": {
+    name: "组合式函数封装",
+  },
   "/vue/preloadImage": {
     name: "图片预加载",
   },

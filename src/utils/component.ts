@@ -18,6 +18,9 @@ const packageComponent = {
   "/package/el-dialog": {
     name: "二开el-dialog",
   },
+  "/package/el-input": {
+    name: "二开el-input",
+  },
 } as const;
 
 const vueComponent = {

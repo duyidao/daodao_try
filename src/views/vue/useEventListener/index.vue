@@ -22,6 +22,10 @@ const stopFn = () => {
 }
 
 const showElement = ref(false)
+const btnRef = useTemplateRef('btnRef')
+useEvent(btnRef, 'click', () => {
+  ElMessage.success('点击按钮成功')
+})
 </script>
 
 <template>
@@ -31,6 +35,7 @@ const showElement = ref(false)
   <h1 v-if="showElement"
     class="mt-10"
     ref="buttonRef">Hello vue3</h1>
+  <el-button ref="btnRef">click me</el-button>
 </template>
 
 <style scoped></style>

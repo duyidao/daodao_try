@@ -17,8 +17,9 @@ export function useEvent(...args: any[]): () => void {
     () => unref(el),
     (val, _, onCleanup) => {
       if (!val) return;
-      val.addEventListener(...args);
-      onCleanup(() => val.removeEventListener(...args)); // 绑定当前el的解绑事件
+      const element = val.ref || val;
+      element.addEventListener(...args);
+      onCleanup(() => element.removeEventListener(...args)); // 绑定当前el的解绑事件
     },
     {
       immediate: true,

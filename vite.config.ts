@@ -34,10 +34,11 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      scss: {
-        additionalData: `@use "@/assets/styles/var.scss" as *;`,
-      },
-    },
+      sass: {
+        // 忽略特定的 deprecation 警告
+        silenceDeprecations: ['if-function']
+      }
+    }
   },
   resolve: {
     alias: {

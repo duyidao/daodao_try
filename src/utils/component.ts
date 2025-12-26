@@ -45,6 +45,9 @@ const vueComponent = {
   "/vue/useEventListener": {
     name: "组合式函数封装",
   },
+  "/vue/usePinia": {
+    name: "全局状态管理",
+  },
   "/vue/preloadImage": {
     name: "图片预加载",
   },

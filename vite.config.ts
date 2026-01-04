@@ -23,7 +23,7 @@ export default defineConfig({
     }),
     UnoCSS(),
     PreloadImage({
-      dir: 'images/*.{jpg,png,svg,webp}',
+      dir: 'src/assets/images/*.{jpg,png,svg,webp}',
       attrs: {
         rel: 'prefetch'
       }

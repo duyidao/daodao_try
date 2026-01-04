@@ -9,6 +9,9 @@ const jsComponent = {
   "/js/objectLoop": {
     name: "对象循环引用",
   },
+  "/js/asyncOnce": {
+    name: "相同请求复用",
+  },
 } as const;
 
 const packageComponent = {

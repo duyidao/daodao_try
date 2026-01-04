@@ -11,7 +11,7 @@ loadOnce().then(res => {
 
 <template>
   <el-descriptions title="child2" :column="2">
-    <el-descriptions-item v-for="(value, key, index) in data" :label="key" :key="value">{{value}}</el-descriptions-item>
+    <el-descriptions-item v-for="(value, key) in data" :label="key" :key="key">{{value}}</el-descriptions-item>
   </el-descriptions>
 </template>
 

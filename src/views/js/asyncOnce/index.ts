@@ -3,15 +3,18 @@ async function load() {
   return res.json();
 }
 
+interface mapState {
+  resolve: any[];
+  reject: any[];
+  isPending: boolean;
+}
+
 function asyncOnce(cb: (...args: any[]) => any) {
-  let map: Record<string, {
-    resolve: (value: any) => void;
-    reject: (reason?: any) => void;
-    isPending: boolean;
-  }> = new Map()
+  let map: Map<string, mapState> = new Map()
   return (...args: any[]) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve: any, reject: any) => {
       const key = JSON.stringify(args)
+      if (!map) return
       // 没有就创建一个
       if(!map.has(key)) {
         map.set(key, {
@@ -20,7 +23,7 @@ function asyncOnce(cb: (...args: any[]) => any) {
           isPending: false
         })
       }
-      const state = map.get(key)
+      const state = map.get(key)!
       // 把当前的成功和失败回调保存起来
       state.resolve.push(resolve)
       state.reject.push(reject)
@@ -29,14 +32,14 @@ function asyncOnce(cb: (...args: any[]) => any) {
       // 如果没请求过，则发起请求
       state.isPending = true
       cb(...args)
-        .then((res) => {
-          state.resolve.forEach((resolve) => resolve(res))
+        .then((res: any) => {
+          state.resolve.forEach((resolve: any) => resolve(res))
         })
-        .catch((err) => {
-          state.reject.forEach((reject) => reject(err))
+        .catch((err: any) => {
+          state.reject.forEach((reject: any) => reject(err))
         })
         .finally(() => {
-          map.set(key, null)
+          map.set(key, {} as mapState)
         })
     })
   }

@@ -16,7 +16,7 @@ function asyncOnce(cb: (...args: any[]) => any) {
       const key = JSON.stringify(args)
       if (!map) return
       // 没有就创建一个
-      if(!map.has(key) || !map.get(key).resolve) {
+      if(!map.has(key) || !map.get(key)!.resolve) {
         map.set(key, {
           resolve: [],
           reject: [],

@@ -23,8 +23,7 @@ function asyncOnce(cb: (...args: any[]) => any) {
           isPending: false
         })
       }
-      const state = map.get(key)
-      console.log('state', state);
+      const state = map.get(key)!
       // 把当前的成功和失败回调保存起来
       state.resolve.push(resolve)
       state.reject.push(reject)

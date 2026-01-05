@@ -27,14 +27,14 @@ const packageComponent = {
 } as const;
 
 const vueComponent = {
+  "/vue/provideInject": {
+    name: "封装provide/inject",
+  },
   "/vue/customRefLoading": {
     name: "请求loading封装",
   },
   "/vue/defineComponent": {
     name: "组件内模板复用",
-  },
-  "/vue/provideInject": {
-    name: "封装provide/inject",
   },
   "/vue/stateReset": {
     name: "状态重置",
@@ -47,6 +47,9 @@ const vueComponent = {
   },
   "/vue/useEventListener": {
     name: "组合式函数封装",
+  },
+  "/vue/defineAsyncComponent": {
+    name: "异步组件实现原理",
   },
   "/vue/usePinia": {
     name: "全局状态管理",

@@ -1,5 +1,6 @@
-interface ComponentMeta {
+export interface ComponentMeta {
   name: string;
+  tags?: readonly string[];
 }
 
 const jsComponent = {

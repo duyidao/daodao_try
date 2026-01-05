@@ -14,7 +14,7 @@ import { RouterView, useRoute } from 'vue-router'
 import { useEvent } from '@/views/hook/useEventListener/index'
 import { throttle } from 'lodash-es'
 
-type AllowedPath = '/js' | '/package' | '/vue'
+type AllowedPath = '/js' | '/reDevelop' | '/vue' | '/vite' | '/hook'
 
 const pathIconMap: Record<AllowedPath, typeof Document> = {
   '/js': Document,
@@ -42,7 +42,7 @@ scrollWindow()
 // 监听窗口大小变化
 useEvent('resize', throttle(scrollWindow, 500))
 
-const menuDict = {
+const menuDict: { [key: string]: string } = {
   'js': 'JavaScript',
   'reDevelop': '二次开发',
   'vue': 'Vue',
@@ -96,8 +96,8 @@ const menuDict = {
       <el-card class="h-60 mb-10 content-title">
         <div class="flex items-center gap-12">
           <h1 class="text-16 font-600">{{ route.meta!.name }}</h1>
-          <div v-if="route.meta!.tags?.length" class="flex items-center gap-8">
-            <el-tag v-for="item in route.meta!.tags">{{item}}</el-tag>
+          <div v-if="(route.meta!.tags as string[])?.length" class="flex items-center gap-8">
+            <el-tag v-for="item in (route.meta!.tags as string[])">{{item}}</el-tag>
           </div>
         </div>
         <el-button disabled>返回首页</el-button>

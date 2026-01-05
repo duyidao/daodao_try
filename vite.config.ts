@@ -32,14 +32,6 @@ export default defineConfig({
   server: {
     port: 814,
   },
-  css: {
-    preprocessorOptions: {
-      sass: {
-        // 忽略特定的 deprecation 警告
-        silenceDeprecations: ['if-function']
-      }
-    }
-  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

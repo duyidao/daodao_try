@@ -16,14 +16,15 @@ function asyncOnce(cb: (...args: any[]) => any) {
       const key = JSON.stringify(args)
       if (!map) return
       // 没有就创建一个
-      if(!map.has(key)) {
+      if(!map.has(key) || !map.get(key).resolve) {
         map.set(key, {
           resolve: [],
           reject: [],
           isPending: false
         })
       }
-      const state = map.get(key)!
+      const state = map.get(key)
+      console.log('state', state);
       // 把当前的成功和失败回调保存起来
       state.resolve.push(resolve)
       state.reject.push(reject)

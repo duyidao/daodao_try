@@ -14,53 +14,62 @@ const jsComponent = {
   },
 } as const;
 
-const packageComponent = {
-  "/package/el-button": {
+const reDevelopComponent = {
+  "/reDevelop/el-button": {
     name: "二开el-button",
   },
-  "/package/el-dialog": {
+  "/reDevelop/el-dialog": {
     name: "二开el-dialog",
   },
-  "/package/el-input": {
+  "/reDevelop/el-input": {
     name: "二开el-input",
   },
 } as const;
 
 const vueComponent = {
-  "/vue/provideInject": {
-    name: "封装provide/inject",
-  },
-  "/vue/customRefLoading": {
-    name: "请求loading封装",
-  },
-  "/vue/defineComponent": {
-    name: "组件内模板复用",
-  },
-  "/vue/stateReset": {
-    name: "状态重置",
-  },
   "/vue/listenerSon": {
-    name: "父组件监听子组件生命周期",
+    name: "@vue:mounted监听子组件生命周期",
   },
   "/vue/useTemplateRef": {
     name: "useTemplateRef实现原理",
   },
-  "/vue/useEventListener": {
+  "/vue/defineAsyncComponent": {
+    name: "defineAsyncComponent实现原理",
+  },
+} as const;
+
+const viteComponent = {
+  "/vite/preloadImage": {
+    name: "图片预加载",
+  },
+} as const;
+
+const hookComponent = {
+  "/hook/customRefLoading": {
+    name: "请求loading封装",
+    tags: ['customRef']
+  },
+  "/hook/stateReset": {
+    name: "状态重置",
+  },
+  "/hook/useEventListener": {
     name: "组合式函数封装",
   },
-  "/vue/defineAsyncComponent": {
-    name: "异步组件实现原理",
-  },
-  "/vue/usePinia": {
+  "/hook/usePinia": {
     name: "全局状态管理",
   },
-  "/vue/preloadImage": {
-    name: "图片预加载",
+  "/hook/provideInject": {
+    name: "封装provide/inject",
+  },
+  "/hook/defineComponent": {
+    name: "组件内模板复用",
   },
 } as const;
 
 export const component: Record<string, ComponentMeta> = {
   ...jsComponent,
-  ...packageComponent,
+  ...reDevelopComponent,
   ...vueComponent,
+  ...viteComponent,
+  ...hookComponent,
 };

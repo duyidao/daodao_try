@@ -16,6 +16,9 @@ const jsComponent = {
 } as const;
 
 const reDevelopComponent = {
+  "/reDevelop/el-form": {
+    name: "动态表单",
+  },
   "/reDevelop/el-button": {
     name: "二开el-button",
   },

@@ -10,7 +10,6 @@ const attrs = useAttrs()
 const loading = ref(false)
 
 const click = async () => {
-  console.log('123', 123);
   loading.value = true
   try {
     await (attrs.onClick as Function)?.()

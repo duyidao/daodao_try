@@ -28,6 +28,9 @@ const reDevelopComponent = {
   "/reDevelop/el-input": {
     name: "二开el-input",
   },
+  "/reDevelop/sortable": {
+    name: "拖拽组件组合式函数封装",
+  },
 } as const;
 
 const vueComponent = {

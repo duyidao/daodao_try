@@ -81,9 +81,9 @@ const menuDict: { [key: string]: string } = {
           </el-menu-item>
         </el-sub-menu>
       </el-menu>
-      <div class="flex w-full h-50 items-center justify-start bg-[var(--el-menu-bg-color)] pl-15">
+      <div class="flex w-full h-50 items-center justify-start bg-[var(--el-menu-bg-color)] pl-20">
         <el-icon class="cursor-pointer"
-          size="30"
+          size="25"
           color="#505050"
           @click="handleMenuExpand">
           <Expand v-show="isCollapse" />

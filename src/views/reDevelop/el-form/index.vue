@@ -5,8 +5,9 @@ import { useResetRefByObj } from '@/views/hook/stateReset/reset'
 import { ElInput } from 'element-plus'
 import MyButton from '@/views/reDevelop/el-button/myButton.vue'
 import { AddLocation } from '@element-plus/icons-vue'
+import type { FormItem } from './type'
 
-const formItems = computed(() => [
+const formItems = computed<FormItem[]>(() => [
   {
     label: '姓名',
     key: 'name',
@@ -54,7 +55,7 @@ const formItems = computed(() => [
     label: '备注',
     key: 'brank',
     placeholder: '请输入备注',
-    hidden: formData.value.name === '张三'
+    hidden: Boolean(formData.value.name === '张三')
   },
   {
     label: '自定义组件',
@@ -66,7 +67,7 @@ const formItems = computed(() => [
   },
 ])
 
-const { state: formData, reset } = useResetRefByObj({
+const { state: formData, reset } = useResetRefByObj<Record<string, any>>({
   name: '',
   address: '',
   brank: '',
@@ -78,10 +79,10 @@ const formBuilderRef = useTemplateRef('formBuilderRef')
 
 const handleSubmit = async () => {
   await formBuilderRef.value?.validate()
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve: any, reject: any) => {
     // 模拟调用接口
     setTimeout(() => {
-      resolve()
+      resolve('')
     }, 2000)
   })
 }

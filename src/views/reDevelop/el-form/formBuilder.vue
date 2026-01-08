@@ -1,34 +1,36 @@
 <script setup lang="ts">
 import { ElForm, ElFormItem, ElInput, ElInputNumber, ElSelect, ElRow, ElCol } from 'element-plus'
 import { computed, getCurrentInstance } from 'vue'
+import type { ComponentInstance } from "vue"; 
+import type { FormItem } from './type'
 
 const props = defineProps<{
-  formItems: {
-    label: string
-    type: string
-    key: string
-    props?: any
-    rules?: any[]
-  }
+  formItems: FormItem[]
 }>()
 
-const formData = defineModel()
+const formData = defineModel<Record<string, any>>('modelValue', {
+  default: () => ({}),
+})
 
 // 表单校验规则
 const formRules = computed(() => {
-  let rules = {}
-  props.formItems.forEach(item => rules[item.key] = item.rules)
+  let rules: Record<string, any[]> = {}
+  props.formItems.forEach((item: FormItem) => {
+    if (item.rules) {
+      rules[item.key] = item.rules
+    }
+  })
   return rules
 })
 
 // 表单组件字典
-const formItemDict = {
+const formItemDict: Record<string, any> = {
   input: ElInput,
   number: ElInputNumber,
   select: ElSelect,
 }
 
-const form = computed(() => props.formItems.filter(item => !item.hidden))
+const form = computed(() => props.formItems.filter((item: FormItem) => !item.hidden))
 
 // 属性白名单
 const rootProps = ['type', 'key', 'label', 'rules']
@@ -38,14 +40,14 @@ const rootProps = ['type', 'key', 'label', 'rules']
  * @param item 表单项
  * @returns 表单项的props
  */
-const getProps = (item) => {
+const getProps = (item: any) => {
   if (item.props) return item.props
-  let props = {}
+  let bindProps: any = {}
   for (let key in item) {
     if (rootProps.includes(key)) continue
-    props[key] = item[key]
+    bindProps[key] = item[key]
   }
-  return props
+  return bindProps
 }
 
 /**
@@ -53,7 +55,7 @@ const getProps = (item) => {
  * @param item 表单项
  * @returns 表单项的组件
  */
-const getComponent = (item) => {
+const getComponent = (item: FormItem) => {
   const { type } = item
   if (type && typeof type !== 'string') {
     return type
@@ -63,9 +65,11 @@ const getComponent = (item) => {
 
 // el-form方法暴露给父组件
 const vm = getCurrentInstance(); 
-function changeRef(inputInstance) {
-  vm.exposed = vm.exposeProxy = inputInstance || {}; 
-} 
+function changeRef(inputInstance: any) {
+  vm!.exposed = vm!.exposeProxy = inputInstance || {}; 
+}
+
+defineExpose({} as ComponentInstance<typeof ElForm>);
 </script>
 
 <template>

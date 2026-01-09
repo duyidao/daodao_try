@@ -11,7 +11,6 @@ export const useSortable = (containerRef: any, list: Ref<any[]>, options?: any) 
         evt.item.classList.add('bg-amber')
       },
       onEnd: (evt: { item: any }) => {
-        console.log('evt', evt);
         // 移除拖拽样式类
         evt.item.classList.remove('bg-amber')
       },

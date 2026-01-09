@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, useTemplateRef, onMounted } from 'vue'
-import { useSortable } from './useSortable'
+import VueSortable from './useSortable.vue'
 
 const list = ref([
   { id: 1, name: '张三' },
@@ -10,26 +10,22 @@ const list = ref([
   { id: 5, name: '钱七' },
 ])
 
-const containerRef = useTemplateRef('containerRef')
-
-const instance = useSortable(containerRef, list, {
-  animation: 150,
-  onUpdate: (e: any) => {
-    console.log('我自己的需求', e);
-  }
-})
+const vueSortable = useTemplateRef('vueSortable')
 
 const handleDestroy = () => {
-  instance.value.destroy()
+  vueSortable.value.instance.destroy()
 }
 </script>
 
 <template>
   <div>
     <div class="flex gap-40">
-      <ul ref="containerRef" class="flex flex-col gap-10 list-none">
-        <li v-for="item in list" :key="item.id" class="flex justify-center items-center w-120 h-40 bg-#7553db text-#fff rounded-5 cursor-pointer">{{ item.name }}</li>
-      </ul>
+      <VueSortable ref="vueSortable" :animation="150" v-model="list">
+        <template v-slot="{ instance }">
+          <li v-for="item in list" :key="item.id" class="flex justify-center items-center w-120 h-40 bg-#7553db text-#fff rounded-5 cursor-pointer">{{ item.name }}</li>
+        </template>
+      </VueSortable>
+      
 
       <code class="w-200">
         <pre v-for="item in list" :key="item.id" class="text-14">{{ item }}</pre>

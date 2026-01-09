@@ -1,25 +1,36 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { provideContext, injectContext } from './createContext'
-import Son from './son.vue'
-import Son2 from './son2.vue'
+import { provideContextA, provideContextB } from './context'
+import SonA from './sonA.vue'
+import SonB from './sonB.vue'
 
-const title = ref<string>('传递的参数')
-provideContext(title)
+const message = ref<string>('传递的参数')
+provideContextA(message)
 
-watch(title, (newVal) => {
-  provideContext(newVal)
-})
+const count = ref<number>(0)
+provideContextB(count)
 </script>
 
 <template>
-  <div>
-    <h1 class="flex items-center mb-20">
-      <span>我是最上级的祖宗组件：</span>
-      <el-input class="!w-300" v-model="title"></el-input>
-    </h1>
-    <Son />
-    <Son2 />
+  <div class="flex gap-20">
+    <el-card class="flex-1">
+      <template #header>
+        <h1>
+          <p>我是最上级的祖宗组件</p>
+          <el-input class="!w-300" v-model="message"></el-input>
+        </h1>
+      </template>
+      <SonA />
+    </el-card>
+    <el-card class="flex-1">
+      <template #header>
+        <h1>
+          <p>我是最上级的祖宗组件</p>
+          <el-input-number class="!w-300" v-model="count"></el-input-number>
+        </h1>
+      </template>
+      <SonB />
+    </el-card>
   </div>
 </template>
 

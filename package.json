@@ -21,6 +21,7 @@
     "fast-glob": "^3.3.3",
     "less": "^4.5.1",
     "lodash-es": "^4.17.22",
+    "monaco-editor": "^0.55.1",
     "sass": "^1.97.1",
     "sortablejs": "^1.15.6",
     "unocss": "^66.5.10",

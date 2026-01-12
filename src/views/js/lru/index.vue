@@ -23,8 +23,6 @@ class LRUCache {
     if (this.#cache.has(key)) {
       this.#cache.delete(key) // 删除原来的数据
     } else if (this.#cache.size >= this.max) {
-      // 获取第一个键值对
-      const [firstKey] = this.#cache
       this.#cache.delete(this.#cache.keys().next().value) // 删除最久未使用的属性
     }
     this.#cache.set(key, value) // 插入新的数据

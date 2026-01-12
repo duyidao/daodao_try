@@ -13,6 +13,9 @@ const jsComponent = {
   "/js/asyncOnce": {
     name: "相同请求复用",
   },
+  "/js/lru": {
+    name: "LRU缓存",
+  },
 } as const;
 
 const reDevelopComponent = {
